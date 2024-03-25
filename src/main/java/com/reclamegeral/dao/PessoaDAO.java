@@ -2,44 +2,78 @@ package com.reclamegeral.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 import com.reclamegeral.model.Pessoa;
+import com.reclamegeral.util.JPAUtil;
 
 public class PessoaDAO implements IPessoaDAO {
 
+	EntityManager em = JPAUtil.getEntityManager();
+
 	@Override
 	public void salvar(Pessoa pessoa) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.persist(pessoa);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public Pessoa buscarPorId(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Pessoa.class, id);
 	}
 
 	@Override
 	public void atualizar(Pessoa pessoa) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.merge(pessoa);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void remover(Pessoa pessoa) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.remove(em.contains(pessoa) ? pessoa : em.merge(pessoa));
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<Pessoa> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT u FROM Pessoa u", Pessoa.class).getResultList();
 	}
 
 	@Override
 	public void fecharConexao() {
-		// TODO Auto-generated method stub
-
+		if (em != null) {
+			em.close();
+		}
+		if (em != null) {
+			em.close();
+		}
 	}
-
 }

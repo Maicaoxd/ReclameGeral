@@ -2,44 +2,64 @@ package com.reclamegeral.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 import com.reclamegeral.model.Resposta;
+import com.reclamegeral.util.JPAUtil;
 
 public class RespostaDAO implements IRespostaDAO {
+	
+	EntityManager em = JPAUtil.getEntityManager();
 
 	@Override
 	public void salvar(Resposta resposta) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.persist(resposta);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public Resposta buscarPorId(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void atualizar(Resposta resposta) {
-		// TODO Auto-generated method stub
-
+		return em.find(Resposta.class, id);
 	}
 
 	@Override
 	public void remover(Resposta resposta) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.remove(em.contains(resposta) ? resposta : em.merge(resposta));
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<Resposta> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT u FROM Usuario u", Resposta.class).getResultList();
 	}
 
 	@Override
 	public void fecharConexao() {
-		// TODO Auto-generated method stub
-
+		if (em != null) {
+			em.close();
+		}
+		if (em != null) {
+			em.close();
+		}
 	}
 
 }

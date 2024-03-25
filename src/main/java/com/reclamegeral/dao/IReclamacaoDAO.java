@@ -10,8 +10,6 @@ public interface IReclamacaoDAO {
 
 	Reclamacao buscarPorId(long id);
 
-	void atualizar(Reclamacao reclamacao);
-
 	void remover(Reclamacao reclamacao);
 
 	List<Reclamacao> listarTodos();

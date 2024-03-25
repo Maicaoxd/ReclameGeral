@@ -2,44 +2,65 @@ package com.reclamegeral.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 import com.reclamegeral.model.Reclamacao;
+import com.reclamegeral.util.JPAUtil;
 
 public class ReclamacaoDAO implements IReclamacaoDAO {
-
+	
+	EntityManager em = JPAUtil.getEntityManager();
+	
 	@Override
 	public void salvar(Reclamacao reclamacao) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.persist(reclamacao);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public Reclamacao buscarPorId(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void atualizar(Reclamacao reclamacao) {
-		// TODO Auto-generated method stub
-
+		return em.find(Reclamacao.class, id);
 	}
 
 	@Override
 	public void remover(Reclamacao reclamacao) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.remove(em.contains(reclamacao) ? reclamacao : em.merge(reclamacao));
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<Reclamacao> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT u FROM Usuario u", Reclamacao.class).getResultList();
 	}
 
 	@Override
 	public void fecharConexao() {
-		// TODO Auto-generated method stub
-
+		if (em != null) {
+			em.close();
+		}
+		if (em != null) {
+			em.close();
+		}
 	}
+
 
 }

@@ -2,44 +2,65 @@ package com.reclamegeral.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
 import com.reclamegeral.model.Post;
+import com.reclamegeral.util.JPAUtil;
 
 public class PostDAO implements IPostDAO {
 
+	EntityManager em = JPAUtil.getEntityManager();
+	
 	@Override
 	public void salvar(Post post) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.persist(post);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
-
+		
 	@Override
 	public Post buscarPorId(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Post.class, id);
 	}
 
-	@Override
-	public void atualizar(Post post) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void remover(Post post) {
-		// TODO Auto-generated method stub
-
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.remove(em.contains(post) ? post : em.merge(post));
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public List<Post> listarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("SELECT u FROM Post u", Post.class).getResultList();
 	}
 
 	@Override
 	public void fecharConexao() {
-		// TODO Auto-generated method stub
-
+		if (em != null) {
+			em.close();
+		}
+		if (em != null) {
+			em.close();
+		}
 	}
 
 }

@@ -10,8 +10,6 @@ public interface IRespostaDAO {
 
 	Resposta buscarPorId(long id);
 
-	void atualizar(Resposta resposta);
-
 	void remover(Resposta resposta);
 
 	List<Resposta> listarTodos();

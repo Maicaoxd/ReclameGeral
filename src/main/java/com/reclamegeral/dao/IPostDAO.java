@@ -10,8 +10,6 @@ public interface IPostDAO {
 
 	Post buscarPorId(long id);
 
-	void atualizar(Post post);
-
 	void remover(Post post);
 
 	List<Post> listarTodos();
