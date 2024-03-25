@@ -51,7 +51,7 @@ public class Usuario {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void SetId(long id) {
 		this.id = id;
 	}
 
@@ -59,7 +59,7 @@ public class Usuario {
 		return codIdentificacao;
 	}
 
-	public void setCodIdentificacao(long codIdentificacao) {
+	public void SetCodIdentificacao(long codIdentificacao) {
 		this.codIdentificacao = codIdentificacao;
 	}
 
@@ -67,7 +67,7 @@ public class Usuario {
 		return nascimento;
 	}
 
-	public void setNascimento(LocalDate nascimento) {
+	public void SetNascimento(LocalDate nascimento) {
 		this.nascimento = nascimento;
 	}
 
@@ -75,7 +75,7 @@ public class Usuario {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void SetNome(String nome) {
 		this.nome = nome;
 	}
 
@@ -83,7 +83,7 @@ public class Usuario {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void SetEstado(String estado) {
 		this.estado = estado;
 	}
 
@@ -91,7 +91,7 @@ public class Usuario {
 		return cidade;
 	}
 
-	public void setCidade(String cidade) {
+	public void SetCidade(String cidade) {
 		this.cidade = cidade;
 	}
 
@@ -99,7 +99,7 @@ public class Usuario {
 		return contato;
 	}
 
-	public void setContato(String contato) {
+	public void SetContato(String contato) {
 		this.contato = contato;
 	}
 
@@ -107,7 +107,7 @@ public class Usuario {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void SetEmail(String email) {
 		this.email = email;
 	}
 
@@ -115,7 +115,7 @@ public class Usuario {
 		return senha;
 	}
 
-	public void setSenha(String senha) {
+	public void SetSenha(String senha) {
 		this.senha = senha;
 	}
 
@@ -123,7 +123,7 @@ public class Usuario {
 		return posts;
 	}
 
-	public void setPosts(Set<Post> posts) {
+	public void SetPosts(Set<Post> posts) {
 		this.posts = posts;
 	}
 

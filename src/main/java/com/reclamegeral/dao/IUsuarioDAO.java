@@ -12,7 +12,7 @@ public interface IUsuarioDAO {
 
 	void atualizar(Usuario usuario);
 
-	void remover(Usuario usuario);
+	void remover(long id);
 
 	List<Usuario> listarTodos();
 

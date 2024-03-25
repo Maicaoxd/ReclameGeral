@@ -48,11 +48,11 @@ public class UsuarioDAO implements IUsuarioDAO {
 	}
 
 	@Override
-	public void remover(Usuario usuario) {
+	public void remover(long id) {
 		EntityTransaction transaction = em.getTransaction();
 		try {
 			transaction.begin();
-			em.remove(em.contains(usuario) ? usuario : em.merge(usuario));
+			em.remove(em.contains(id) ? id : em.merge(id));
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction.isActive()) {

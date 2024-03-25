@@ -24,7 +24,7 @@ public class Pessoa extends Usuario {
 		return genero;
 	}
 
-	public void setGenero(String genero) {
+	public void SetGenero(String genero) {
 		this.genero = genero;
 	}
 
@@ -32,7 +32,7 @@ public class Pessoa extends Usuario {
 		return isBlackSet;
 	}
 
-	public void setBlackSet(boolean isBlackSet) {
+	public void SetBlackSet(boolean isBlackSet) {
 		this.isBlackSet = isBlackSet;
 	}
 

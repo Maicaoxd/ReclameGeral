@@ -20,8 +20,8 @@ public class UsuarioController {
 		return usuarioDao.buscarPorId(id);
 	}
 
-	public void apagar(Usuario usuario) {
-		usuarioDao.remover(usuario);
+	public void apagar(long id) {
+		usuarioDao.remover(id);
 	}
 
 	public void atualizar(Usuario usuario) {
