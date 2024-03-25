@@ -9,7 +9,7 @@ import com.reclamegeral.model.Resposta;
 import com.reclamegeral.util.JPAUtil;
 
 public class RespostaDAO implements IRespostaDAO {
-	
+
 	EntityManager em = JPAUtil.getEntityManager();
 
 	@Override
@@ -33,6 +33,21 @@ public class RespostaDAO implements IRespostaDAO {
 	}
 
 	@Override
+	public void atualizar(Resposta resposta) {
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.merge(resposta);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public void remover(Resposta resposta) {
 		EntityTransaction transaction = em.getTransaction();
 		try {
@@ -49,7 +64,7 @@ public class RespostaDAO implements IRespostaDAO {
 
 	@Override
 	public List<Resposta> listarTodos() {
-		return em.createQuery("SELECT u FROM Usuario u", Resposta.class).getResultList();
+		return em.createQuery("SELECT r FROM Resposta r", Resposta.class).getResultList();
 	}
 
 	@Override
@@ -61,5 +76,4 @@ public class RespostaDAO implements IRespostaDAO {
 			em.close();
 		}
 	}
-
 }

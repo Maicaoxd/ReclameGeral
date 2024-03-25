@@ -9,9 +9,9 @@ import com.reclamegeral.model.Reclamacao;
 import com.reclamegeral.util.JPAUtil;
 
 public class ReclamacaoDAO implements IReclamacaoDAO {
-	
+
 	EntityManager em = JPAUtil.getEntityManager();
-	
+
 	@Override
 	public void salvar(Reclamacao reclamacao) {
 		EntityTransaction transaction = em.getTransaction();
@@ -33,6 +33,21 @@ public class ReclamacaoDAO implements IReclamacaoDAO {
 	}
 
 	@Override
+	public void atualizar(Reclamacao reclamacao) {
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.merge(reclamacao);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+	}
+
+	@Override
 	public void remover(Reclamacao reclamacao) {
 		EntityTransaction transaction = em.getTransaction();
 		try {
@@ -49,7 +64,7 @@ public class ReclamacaoDAO implements IReclamacaoDAO {
 
 	@Override
 	public List<Reclamacao> listarTodos() {
-		return em.createQuery("SELECT u FROM Usuario u", Reclamacao.class).getResultList();
+		return em.createQuery("SELECT r FROM Reclamacao r", Reclamacao.class).getResultList();
 	}
 
 	@Override
@@ -61,6 +76,4 @@ public class ReclamacaoDAO implements IReclamacaoDAO {
 			em.close();
 		}
 	}
-
-
 }

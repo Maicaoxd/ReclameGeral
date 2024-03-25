@@ -1,19 +1,20 @@
 package com.reclamegeral.dao;
 
 import java.util.List;
+
 import com.reclamegeral.model.Pessoa;
 
 public interface IPessoaDAO {
 
-    void salvar(Pessoa pessoa);
+	void salvar(Pessoa pessoa);
 
-    Pessoa buscarPorId(long id);
+	Pessoa buscarPorId(long id);
 
-    void atualizar(Pessoa pessoa);
+	void atualizar(Pessoa pessoa);
 
-    void remover(Pessoa pessoa);
+	void remover(Pessoa pessoa);
 
-    List<Pessoa> listarTodos();
+	List<Pessoa> listarTodos();
 
-    void fecharConexao();
+	void fecharConexao();
 }

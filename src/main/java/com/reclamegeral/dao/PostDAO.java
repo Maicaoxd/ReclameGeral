@@ -11,7 +11,7 @@ import com.reclamegeral.util.JPAUtil;
 public class PostDAO implements IPostDAO {
 
 	EntityManager em = JPAUtil.getEntityManager();
-	
+
 	@Override
 	public void salvar(Post post) {
 		EntityTransaction transaction = em.getTransaction();
@@ -26,12 +26,26 @@ public class PostDAO implements IPostDAO {
 			e.printStackTrace();
 		}
 	}
-		
+
 	@Override
 	public Post buscarPorId(long id) {
 		return em.find(Post.class, id);
 	}
 
+	@Override
+	public void atualizar(Post post) {
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			em.merge(post);
+			transaction.commit();
+		} catch (Exception e) {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public void remover(Post post) {
@@ -50,7 +64,7 @@ public class PostDAO implements IPostDAO {
 
 	@Override
 	public List<Post> listarTodos() {
-		return em.createQuery("SELECT u FROM Post u", Post.class).getResultList();
+		return em.createQuery("SELECT p FROM Post p", Post.class).getResultList();
 	}
 
 	@Override
@@ -62,5 +76,4 @@ public class PostDAO implements IPostDAO {
 			em.close();
 		}
 	}
-
 }
