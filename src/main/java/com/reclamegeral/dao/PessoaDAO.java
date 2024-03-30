@@ -28,7 +28,7 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public Pessoa buscarPorId(long id) {
+	public Pessoa buscarPorId(Long id) {
 		return em.find(Pessoa.class, id);
 	}
 

@@ -16,7 +16,7 @@ public class ReclamacaoController {
 		return reclamacaoDao.listarTodos();
 	}
 
-	public Reclamacao pesquisarUmReclamacao(long id) {
+	public Reclamacao pesquisarUmReclamacao(Long id) {
 		return reclamacaoDao.buscarPorId(id);
 	}
 

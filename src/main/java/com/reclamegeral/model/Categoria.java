@@ -15,7 +15,7 @@ public class Categoria {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String nome;
 
 	@OneToMany(mappedBy = "categoria")
@@ -24,18 +24,18 @@ public class Categoria {
 	public Categoria() {
 	}
 
-	public Categoria(long id, String nome, Set<Reclamacao> reclamacoes) {
+	public Categoria(Long id, String nome, Set<Reclamacao> reclamacoes) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.reclamacoes = reclamacoes;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

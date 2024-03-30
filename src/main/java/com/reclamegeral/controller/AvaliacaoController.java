@@ -16,7 +16,7 @@ public class AvaliacaoController {
 		return avaliacaoDao.listarTodos();
 	}
 
-	public Avaliacao pesquisarUmAvaliacao(long id) {
+	public Avaliacao pesquisarUmAvaliacao(Long id) {
 		return avaliacaoDao.buscarPorId(id);
 	}
 

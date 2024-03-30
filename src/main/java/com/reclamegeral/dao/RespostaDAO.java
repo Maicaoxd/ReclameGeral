@@ -28,7 +28,7 @@ public class RespostaDAO implements IRespostaDAO {
 	}
 
 	@Override
-	public Resposta buscarPorId(long id) {
+	public Resposta buscarPorId(Long id) {
 		return em.find(Resposta.class, id);
 	}
 

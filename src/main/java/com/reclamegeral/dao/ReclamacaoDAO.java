@@ -28,7 +28,7 @@ public class ReclamacaoDAO implements IReclamacaoDAO {
 	}
 
 	@Override
-	public Reclamacao buscarPorId(long id) {
+	public Reclamacao buscarPorId(Long id) {
 		return em.find(Reclamacao.class, id);
 	}
 

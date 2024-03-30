@@ -16,7 +16,7 @@ public class RespostaController {
 		return respostaDao.listarTodos();
 	}
 
-	public Resposta pesquisarUmResposta(long id) {
+	public Resposta pesquisarUmResposta(Long id) {
 		return respostaDao.buscarPorId(id);
 	}
 

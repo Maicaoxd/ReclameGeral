@@ -8,7 +8,7 @@ public interface IReclamacaoDAO {
 
 	void salvar(Reclamacao reclamacao);
 
-	Reclamacao buscarPorId(long id);
+	Reclamacao buscarPorId(Long id);
 
 	void atualizar(Reclamacao reclamacao);
 

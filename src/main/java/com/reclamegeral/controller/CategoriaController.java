@@ -16,7 +16,7 @@ public class CategoriaController {
 		return categoriaDao.listarTodos();
 	}
 
-	public Categoria pesquisarUmCategoria(long id) {
+	public Categoria pesquisarUmCategoria(Long id) {
 		return categoriaDao.buscarPorId(id);
 	}
 

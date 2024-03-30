@@ -8,7 +8,7 @@ public interface IAvaliacaoDAO {
 
 	void salvar(Avaliacao avaliacao);
 
-	Avaliacao buscarPorId(long id);
+	Avaliacao buscarPorId(Long id);
 
 	void atualizar(Avaliacao avaliacao);
 

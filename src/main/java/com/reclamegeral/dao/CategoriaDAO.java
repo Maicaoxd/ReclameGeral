@@ -28,7 +28,7 @@ public class CategoriaDAO implements ICategoriaDAO {
 	}
 
 	@Override
-	public Categoria buscarPorId(long id) {
+	public Categoria buscarPorId(Long id) {
 		return em.find(Categoria.class, id);
 	}
 

@@ -8,7 +8,7 @@ public interface IRespostaDAO {
 
 	void salvar(Resposta resposta);
 
-	Resposta buscarPorId(long id);
+	Resposta buscarPorId(Long id);
 
 	void atualizar(Resposta resposta);
 

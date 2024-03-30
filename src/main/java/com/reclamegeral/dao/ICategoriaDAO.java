@@ -8,7 +8,7 @@ public interface ICategoriaDAO {
 
 	void salvar(Categoria categoria);
 
-	Categoria buscarPorId(long id);
+	Categoria buscarPorId(Long id);
 
 	void atualizar(Categoria categoria);
 

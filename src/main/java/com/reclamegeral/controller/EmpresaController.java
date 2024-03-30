@@ -16,7 +16,7 @@ public class EmpresaController {
 		return empresaDao.listarTodos();
 	}
 
-	public Empresa pesquisarUmEmpresa(long id) {
+	public Empresa pesquisarUmEmpresa(Long id) {
 		return empresaDao.buscarPorId(id);
 	}
 

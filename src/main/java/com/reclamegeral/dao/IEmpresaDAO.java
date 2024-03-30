@@ -8,7 +8,7 @@ public interface IEmpresaDAO {
 
 	void salvar(Empresa empresa);
 
-	Empresa buscarPorId(long id);
+	Empresa buscarPorId(Long id);
 
 	void atualizar(Empresa empresa);
 

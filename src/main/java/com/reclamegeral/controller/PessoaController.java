@@ -16,7 +16,7 @@ public class PessoaController {
 		return pessoaDao.listarTodos();
 	}
 
-	public Pessoa pesquisarUmPessoa(long id) {
+	public Pessoa pesquisarUmPessoa(Long id) {
 		return pessoaDao.buscarPorId(id);
 	}
 
