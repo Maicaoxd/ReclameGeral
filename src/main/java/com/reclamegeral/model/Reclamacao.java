@@ -42,12 +42,13 @@ public class Reclamacao {
 	public Reclamacao() {
 	}
 
-	public Reclamacao(String texto, LocalDateTime dataHora, boolean hasReply, Pessoa pessoa, Empresa empresa,
+	public Reclamacao(String texto, LocalDateTime dataHora, boolean hasReply, Long id, Pessoa pessoa, Empresa empresa,
 			Categoria categoria, Set<Resposta> respostas) {
 		super();
 		this.texto = texto;
 		this.dataHora = dataHora;
 		this.hasReply = hasReply;
+		this.id = id;
 		this.pessoa = pessoa;
 		this.empresa = empresa;
 		this.categoria = categoria;
@@ -76,6 +77,14 @@ public class Reclamacao {
 
 	public void setHasReply(boolean hasReply) {
 		this.hasReply = hasReply;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Pessoa getPessoa() {
@@ -108,6 +117,13 @@ public class Reclamacao {
 
 	public void setRespostas(Set<Resposta> respostas) {
 		this.respostas = respostas;
+	}
+
+	@Override
+	public String toString() {
+		return "Reclamacao [texto=" + texto + ", dataHora=" + dataHora + ", hasReply=" + hasReply + ", id=" + id
+				+ ", pessoa=" + pessoa.getNome() + ", empresa=" + empresa.getNomeFantasia() + ", categoria=" + categoria.getNome() + ", respostas="
+				+ respostas + "]";
 	}
 
 }

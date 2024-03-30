@@ -77,4 +77,10 @@ public class Avaliacao {
 		this.reclamacao = reclamacao;
 	}
 
+	@Override
+	public String toString() {
+		return "Avaliacao [id=" + id + ", pontuacao=" + pontuacao + ", isResolved=" + isResolved + ", dtAvaliacao="
+				+ dtAvaliacao + ", reclamacao=" + reclamacao.getId() + "]";
+	}
+
 }

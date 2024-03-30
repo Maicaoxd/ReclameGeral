@@ -5,19 +5,19 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import com.reclamegeral.model.Pessoa;
+import com.reclamegeral.model.Usuario;
 import com.reclamegeral.util.JPAUtil;
 
-public class PessoaDAO implements IPessoaDAO {
+public class UsuarioDAO implements IUsuarioDAO {
 
 	EntityManager em = JPAUtil.getEntityManager();
 
 	@Override
-	public void salvar(Pessoa pessoa) {
+	public void salvar(Usuario usuario) {
 		EntityTransaction transaction = em.getTransaction();
 		try {
 			transaction.begin();
-			em.persist(pessoa);
+			em.persist(usuario);
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction.isActive()) {
@@ -28,16 +28,16 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public Pessoa buscarPorId(Long id) {
-		return em.find(Pessoa.class, id);
+	public Usuario buscarPorId(Long id) {
+		return em.find(Usuario.class, id);
 	}
 
 	@Override
-	public void atualizar(Pessoa pessoa) {
+	public void atualizar(Usuario usuario) {
 		EntityTransaction transaction = em.getTransaction();
 		try {
 			transaction.begin();
-			em.merge(pessoa);
+			em.merge(usuario);
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction.isActive()) {
@@ -48,11 +48,11 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public void remover(Pessoa pessoa) {
+	public void remover(Usuario usuario) {
 		EntityTransaction transaction = em.getTransaction();
 		try {
 			transaction.begin();
-			em.remove(em.contains(pessoa) ? pessoa : em.merge(pessoa));
+			em.remove(em.contains(usuario) ? usuario : em.merge(usuario));
 			transaction.commit();
 		} catch (Exception e) {
 			if (transaction.isActive()) {
@@ -63,8 +63,8 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public List<Pessoa> listarTodos() {
-		return em.createQuery("SELECT p FROM Pessoa p", Pessoa.class).getResultList();
+	public List<Usuario> listarTodos() {
+		return em.createQuery("SELECT u FROM Usuario u", Usuario.class).getResultList();
 	}
 
 	@Override

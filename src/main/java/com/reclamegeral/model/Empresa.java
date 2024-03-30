@@ -50,4 +50,10 @@ public class Empresa extends Usuario {
 		this.reclamacoes = reclamacoes;
 	}
 
+	@Override
+	public String toString() {
+		return "Empresa [nomeFantasia=" + nomeFantasia + ", sobre=" + sobre + ", reclamacoes=" + reclamacoes + "]"
+				+ "\n" + super.toString();
+	}
+
 }

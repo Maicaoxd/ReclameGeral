@@ -30,9 +30,10 @@ public abstract class Usuario {
 	public Usuario() {
 	}
 
-	public Usuario(Long cpfCnpj, LocalDate nascimento, String nome, String estado, String cidade, String telefone,
-			String email, String senha) {
+	public Usuario(Long id, Long cpfCnpj, LocalDate nascimento, String nome, String estado, String cidade,
+			String telefone, String email, String senha) {
 		super();
+		this.id = id;
 		this.cpfCnpj = cpfCnpj;
 		this.nascimento = nascimento;
 		this.nome = nome;
@@ -41,6 +42,14 @@ public abstract class Usuario {
 		this.telefone = telefone;
 		this.email = email;
 		this.senha = senha;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Long getCpfCnpj() {
@@ -105,6 +114,13 @@ public abstract class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", cpfCnpj=" + cpfCnpj + ", nascimento=" + nascimento + ", nome=" + nome
+				+ ", estado=" + estado + ", cidade=" + cidade + ", telefone=" + telefone + ", email=" + email
+				+ ", senha=" + senha + "]";
 	}
 
 }

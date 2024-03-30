@@ -80,4 +80,10 @@ public class Resposta {
 		this.autor = autor;
 	}
 
+	@Override
+	public String toString() {
+		return "Resposta [id=" + id + ", texto=" + texto + ", dataHora=" + dataHora + ", reclamacao="
+				+ reclamacao.getId() + ", autor=" + autor.getNome() + "]";
+	}
+
 }
