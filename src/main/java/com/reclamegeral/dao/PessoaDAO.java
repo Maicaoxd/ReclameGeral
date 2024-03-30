@@ -28,7 +28,7 @@ public class PessoaDAO implements IPessoaDAO {
 	}
 
 	@Override
-	public Pessoa buscarPorId(long id) {
+	public Pessoa buscarPorId(Long id) {
 		return em.find(Pessoa.class, id);
 	}
 
@@ -64,7 +64,7 @@ public class PessoaDAO implements IPessoaDAO {
 
 	@Override
 	public List<Pessoa> listarTodos() {
-		return em.createQuery("SELECT u FROM Pessoa u", Pessoa.class).getResultList();
+		return em.createQuery("SELECT p FROM Pessoa p", Pessoa.class).getResultList();
 	}
 
 	@Override

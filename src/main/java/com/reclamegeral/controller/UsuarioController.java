@@ -16,7 +16,7 @@ public class UsuarioController {
 		return usuarioDao.listarTodos();
 	}
 
-	public Usuario pesquisarUmUsuario(long id) {
+	public Usuario pesquisarUmUsuario(Long id) {
 		return usuarioDao.buscarPorId(id);
 	}
 
@@ -27,5 +27,4 @@ public class UsuarioController {
 	public void atualizar(Usuario usuario) {
 		usuarioDao.atualizar(usuario);
 	}
-
 }

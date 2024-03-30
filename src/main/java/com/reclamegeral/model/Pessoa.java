@@ -1,23 +1,29 @@
 package com.reclamegeral.model;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "pessoa")
 public class Pessoa extends Usuario {
+
 	private String genero;
-	private boolean isBlackSet;
+	private boolean isBlackList;
+
+	@OneToMany(mappedBy = "pessoa")
+	private Set<Reclamacao> reclamacoes;
 
 	public Pessoa() {
 	}
 
-	public Pessoa(long id, long codIdentificacao, LocalDate nascimento, String nome, String estado, String cidade,
-			String contato, String email, String senha, Set<Post> posts, String genero, boolean isBlackSet) {
-		super(id, codIdentificacao, nascimento, nome, estado, cidade, contato, email, senha, posts);
+	public Pessoa(String genero, boolean isBlackList, Set<Reclamacao> reclamacoes) {
+		super();
 		this.genero = genero;
-		this.isBlackSet = isBlackSet;
+		this.isBlackList = isBlackList;
+		this.reclamacoes = reclamacoes;
 	}
 
 	public String getGenero() {
@@ -28,12 +34,26 @@ public class Pessoa extends Usuario {
 		this.genero = genero;
 	}
 
-	public boolean isBlackSet() {
-		return isBlackSet;
+	public boolean isBlackList() {
+		return isBlackList;
 	}
 
-	public void setBlackSet(boolean isBlackSet) {
-		this.isBlackSet = isBlackSet;
+	public void setBlackList(boolean isBlackList) {
+		this.isBlackList = isBlackList;
+	}
+
+	public Set<Reclamacao> getReclamacoes() {
+		return reclamacoes;
+	}
+
+	public void setReclamacoes(Set<Reclamacao> reclamacoes) {
+		this.reclamacoes = reclamacoes;
+	}
+
+	@Override
+	public String toString() {
+		return "Pessoa [genero=" + genero + ", isBlackList=" + isBlackList + ", reclamacoes=" + reclamacoes + "]" + "\n"
+				+ super.toString();
 	}
 
 }

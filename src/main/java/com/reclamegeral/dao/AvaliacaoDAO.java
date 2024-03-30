@@ -28,7 +28,7 @@ public class AvaliacaoDAO implements IAvaliacaoDAO {
 	}
 
 	@Override
-	public Avaliacao buscarPorId(long id) {
+	public Avaliacao buscarPorId(Long id) {
 		return em.find(Avaliacao.class, id);
 	}
 

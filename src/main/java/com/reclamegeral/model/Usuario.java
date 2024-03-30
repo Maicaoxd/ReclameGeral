@@ -1,66 +1,63 @@
 package com.reclamegeral.model;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "usuario")
-public class Usuario {
+public abstract class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private long codIdentificacao;
+	private Long id;
+	private Long cpfCnpj;
 	private LocalDate nascimento;
 	private String nome;
 	private String estado;
 	private String cidade;
-	private String contato;
+	private String telefone;
 	private String email;
 	private String senha;
-
-	@OneToMany(mappedBy = "usuario")
-	private Set<Post> posts;
 
 	public Usuario() {
 	}
 
-	public Usuario(long id, long codIdentificacao, LocalDate nascimento, String nome, String estado, String cidade,
-			String contato, String email, String senha, Set<Post> posts) {
+	public Usuario(Long id, Long cpfCnpj, LocalDate nascimento, String nome, String estado, String cidade,
+			String telefone, String email, String senha) {
 		super();
 		this.id = id;
-		this.codIdentificacao = codIdentificacao;
+		this.cpfCnpj = cpfCnpj;
 		this.nascimento = nascimento;
 		this.nome = nome;
 		this.estado = estado;
 		this.cidade = cidade;
-		this.contato = contato;
+		this.telefone = telefone;
 		this.email = email;
 		this.senha = senha;
-		this.posts = posts;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public long getCodIdentificacao() {
-		return codIdentificacao;
+	public Long getCpfCnpj() {
+		return cpfCnpj;
 	}
 
-	public void setCodIdentificacao(long codIdentificacao) {
-		this.codIdentificacao = codIdentificacao;
+	public void setCpfCnpj(Long cpfCnpj) {
+		this.cpfCnpj = cpfCnpj;
 	}
 
 	public LocalDate getNascimento() {
@@ -95,12 +92,12 @@ public class Usuario {
 		this.cidade = cidade;
 	}
 
-	public String getContato() {
-		return contato;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setContato(String contato) {
-		this.contato = contato;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getEmail() {
@@ -119,12 +116,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public Set<Post> getPosts() {
-		return posts;
-	}
-
-	public void setPosts(Set<Post> posts) {
-		this.posts = posts;
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", cpfCnpj=" + cpfCnpj + ", nascimento=" + nascimento + ", nome=" + nome
+				+ ", estado=" + estado + ", cidade=" + cidade + ", telefone=" + telefone + ", email=" + email
+				+ ", senha=" + senha + "]";
 	}
 
 }

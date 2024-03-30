@@ -1,5 +1,7 @@
 package com.reclamegeral.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,9 +16,10 @@ public class Avaliacao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private float pontuacao;
 	private boolean isResolved;
+	private LocalDateTime dtAvaliacao;
 
 	@OneToOne
 	@JoinColumn(name = "reclamacao_id")
@@ -25,19 +28,20 @@ public class Avaliacao {
 	public Avaliacao() {
 	}
 
-	public Avaliacao(long id, float pontuacao, boolean isResolved, Reclamacao reclamacao) {
+	public Avaliacao(Long id, float pontuacao, boolean isResolved, LocalDateTime dtAvaliacao, Reclamacao reclamacao) {
 		super();
 		this.id = id;
 		this.pontuacao = pontuacao;
 		this.isResolved = isResolved;
+		this.dtAvaliacao = dtAvaliacao;
 		this.reclamacao = reclamacao;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -57,6 +61,14 @@ public class Avaliacao {
 		this.isResolved = isResolved;
 	}
 
+	public LocalDateTime getDtAvaliacao() {
+		return dtAvaliacao;
+	}
+
+	public void setDtAvaliacao(LocalDateTime dtAvaliacao) {
+		this.dtAvaliacao = dtAvaliacao;
+	}
+
 	public Reclamacao getReclamacao() {
 		return reclamacao;
 	}
@@ -64,4 +76,11 @@ public class Avaliacao {
 	public void setReclamacao(Reclamacao reclamacao) {
 		this.reclamacao = reclamacao;
 	}
+
+	@Override
+	public String toString() {
+		return "Avaliacao [id=" + id + ", pontuacao=" + pontuacao + ", isResolved=" + isResolved + ", dtAvaliacao="
+				+ dtAvaliacao + ", reclamacao=" + reclamacao.getId() + "]";
+	}
+
 }

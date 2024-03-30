@@ -8,7 +8,7 @@ public interface IPessoaDAO {
 
 	void salvar(Pessoa pessoa);
 
-	Pessoa buscarPorId(long id);
+	Pessoa buscarPorId(Long id);
 
 	void atualizar(Pessoa pessoa);
 

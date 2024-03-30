@@ -28,7 +28,7 @@ public class EmpresaDAO implements IEmpresaDAO {
 	}
 
 	@Override
-	public Empresa buscarPorId(long id) {
+	public Empresa buscarPorId(Long id) {
 		return em.find(Empresa.class, id);
 	}
 

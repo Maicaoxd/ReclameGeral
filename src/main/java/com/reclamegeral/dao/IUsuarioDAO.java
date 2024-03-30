@@ -8,7 +8,7 @@ public interface IUsuarioDAO {
 
 	void salvar(Usuario usuario);
 
-	Usuario buscarPorId(long id);
+	Usuario buscarPorId(Long id);
 
 	void atualizar(Usuario usuario);
 
