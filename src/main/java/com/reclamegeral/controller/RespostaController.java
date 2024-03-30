@@ -71,7 +71,10 @@ public class RespostaController {
 			resposta.setDataHora(dataHora);
 			resposta.setReclamacao(reclamacao);
 			resposta.setAutor(autor);
-
+			
+			reclamacao.setHasReply(true);
+			reclamacaoController.atualizar(reclamacao);
+			
 			return resposta;
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "ID inválido. Certifique-se de digitar um número válido.");
